@@ -33,6 +33,7 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
   test "should show todo" do
     get todo_url(@todo), headers: @headers, as: :json
     assert_response :success
+    assert_equal content_type, response.content_type
   end
 
   test "should not show todo if not owner" do

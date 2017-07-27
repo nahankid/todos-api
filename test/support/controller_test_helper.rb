@@ -13,7 +13,7 @@ module ControllerTestHelper
   def valid_headers(user_id)
     {
       "Authorization" => token_generator(user_id),
-      "Content-Type" => "application/json"
+      "Content-Type" => 'application/vnd.api+json'
     }
   end
 
@@ -21,11 +21,15 @@ module ControllerTestHelper
   def invalid_headers
     {
       "Authorization" => nil,
-      "Content-Type" => "application/json"
+      "Content-Type" => content_type
     }
   end
 
   def json
     JSON.parse(response.body)
+  end
+
+  def content_type
+    'application/vnd.api+json'
   end
 end
